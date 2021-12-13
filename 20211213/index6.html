@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <!-- 
+        v-for
+    -->
+
+    <style>
+        table tr th {
+            font-size: 16pt;
+            color: gray;
+            background-color: blue;
+            padding: 5px 15px;
+        }
+
+        table tr th {
+            font-size: 16pt;
+            color: gray;
+            border: 1px solid gray;
+            padding: 5px 15px;
+        }
+    </style>
+
+    <h1>Vue.js</h1>
+    <div id="app">
+        <p>※データをテーブル表示する</p>
+        <table>
+            <tr>
+                <th>name</th>
+                <th>mail</th>
+                <th>tel</th>
+            </tr>
+            <tr v-for="(item, key) in items"> 
+                <td>{{key}}</td>
+                <td>{{item.mail}}</td>
+                <td>{{item.tel}}</td>
+            </tr>
+        </table>
+    </div>
+    
+    <script>
+        let data = {
+            items:{
+                taro:{mail:'hanako@flower', tel:'888-888'},
+                Sachiko:{ mail:'sachiko@happy', tel:'777-777'},
+                Jiro:{mail:'jiro@change', tel:'666-666'},
+            }
+        }
+
+        let app = new Vue({ //Vueのオブジェクトを作成
+            el: '#app', //紐付ける要素を指定
+            data: data, //タグ内の{{}}に表示されるデータ類
+        })
+    </script>
+</body>
+</html>

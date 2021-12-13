@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <h1>Vue.js</h1>
+    <div id="app">
+        <!-- v-htmlでHTMLタグを組み込める -->
+        <ol v-html="messages"></ol>
+    </div>
+    <hr>
+    <input type="text" onInput="doInput(event)">
+    <button onclick="doAction()">
+        click
+    </button>
+    <script>
+        let data = {
+            messages: '<li>Hello Vue!</li>'
+        }
+
+        let app = new Vue({ //Vueのオブジェクトを作成
+            el: '#app', //紐付ける要素を指定
+            data: data, //タグ内の{{}}に表示されるデータ類
+        })
+
+        function doInput(event) {
+            data.message = event.target.value
+        }
+
+        function doAction() {
+            data.messages += '<li>' + data.message + '</li>'
+        }
+
+    </script>
+</body>
+</html>

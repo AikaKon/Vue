@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <!-- 属性に値をバインドする -->
+    <!--
+        v-bind: 属性名 = "設定する値"
+    -->
+
+    <h1>Vue.js</h1>
+    <div id="app">
+        <!-- v-bind: を省略して　:style="style" でもOK -->
+        <ol v-bind:style="style">{{ message }}</ol>
+    </div>
+    <hr>
+    <input type="number" onInput="doChange(event)" value="20">
+    <script>
+        let data = {
+            message: 'Hello Vue!',
+            style: 'font-size:20pt; color:blue'
+        }
+
+        let app = new Vue({ //Vueのオブジェクトを作成
+            el: '#app', //紐付ける要素を指定
+            data: data, //タグ内の{{}}に表示されるデータ類
+        })
+
+        function doChange(event) {
+            data.style = 'font-size:' + event.target.value + 'pt; color:red;'
+        }
+
+    </script>
+</body>
+</html>

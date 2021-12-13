@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <h1>Vue.js</h1>
+    <div id="app">
+        {{ message }}
+    </div>
+    <hr>
+    <button onclick="doAction()">
+        click
+    </button>
+
+    <script>
+        let data = {
+            message: 'Hello Vue!',
+            items: ['One', 'Two', 'Three', 'Four', 'Five']
+        }
+
+        let app = new Vue({ //Vueのオブジェクトを作成
+            el: '#app', //紐付ける要素を指定
+            data: data, //タグ内の{{}}に表示されるデータ類
+
+            render: (element) => {
+                let p = element("p",
+                    {'style':'font-size:20pt;'},
+                    data.message)
+                let li = data.items.map(item => element('li', item)) // 配列.map (引数 => 新たな値)ひきすうに配列の各要素が順に代入されていく。
+                let ol = element('ol', li)
+                let div = element('div', [p, ol])
+                return div
+            }
+
+        })
+
+        function doAction(event) {
+            var newdata = [
+                'いち', 'に', 'さん','よん','ご'
+            ]
+            data.message = "クリックしました"
+            data.items[0] = 'ゼロ'
+            for (n in data.items) {
+                data.items[n] = newdata[n]
+            }
+        }
+        
+    </script>
+</body>
+</html>
