@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>My first Vue app</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <style>
+        .hello {
+            font-size: 16pt;
+            font-weight: bold;
+            border: 1px solid magenta;
+            margin: 10px;
+        }
+    </style>
+
+    <h1>Vue.js</h1>
+    <div id="app">
+        <div><hello name="Taro"/></div>
+        <div><hello name="Hanako"/></div>
+    </div>
+
+    <script>
+        Vue.component('hello',
+        {
+            props: { name:String },
+            template: '<p class="hello"> {{ name }} </p>'
+        })
+
+        let app = new Vue({ //Vueのオブジェクトを作成
+            el: '#app', //紐付ける要素を指定
+        })
+
+    </script>
+</body>
+</html>

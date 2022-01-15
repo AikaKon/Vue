@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>My first Vue app</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <style>
+        .hello {
+            font-size: 16pt;
+            font-weight: bold;
+            border: 1px solid magenta;
+            margin: 10px;
+        }
+    </style>
+
+    <!-- v-modelを使用するとリアルタイムに値が更新される -->
+    <h1>Vue.js</h1>
+    <div id="app">
+        <div><hello v-bind:name="name" /></div>
+        <div><input type="text" v-model="name"></div>
+    </div>
+
+    <script>
+        let hello = Vue.component('hello',
+        {
+            props: { name:String },
+            template: '<p class="hello"> {{ name }} </p>'
+        })
+
+        let app = new Vue({ //Vueのオブジェクトを作成
+            el: '#app', //紐付ける要素を指定
+            data: {
+                name: 'no-name'
+            }
+        })
+
+    </script>
+</body>
+</html>

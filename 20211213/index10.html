@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>My first Vue app</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <style>
+        .hello {
+            font-size: 16pt;
+            font-weight: bold;
+            border: 1px solid magenta;
+            margin: 10px;
+        }
+    </style>
+
+    <h1>Vue.js</h1>
+    <div id="app">
+        <hello v-for="item in data" v-bind:name="item" />
+    </div>
+
+    <script>
+        let hello = Vue.component('hello',
+        {
+            props: { name:String },
+            template: '<p class="hello"> {{ name }} </p>'
+        })
+
+        let app = new Vue({ //Vueのオブジェクトを作成
+            el: '#app', //紐付ける要素を指定
+            data: {
+                data:['a', 'b', 'c', 'd']
+            }
+        })
+
+    </script>
+</body>
+</html>
